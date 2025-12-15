@@ -7,6 +7,10 @@ import (
 	"time"
 )
 
+type Game struct {
+	grid [][]Cell
+}
+
 func GetCellState(x int, y int, grid [][]Cell) Cell {
 	if x < 0 || x >= len(grid) {
 		return Cell{Alive: false}
@@ -85,7 +89,7 @@ func render(grid [][]Cell) {
 	for _, row := range grid {
 		for _, cell := range row {
 			if cell.Alive {
-				fmt.Print("█")
+				fmt.Print("█*█")
 			} else {
 				fmt.Print(" ")
 			}
@@ -95,7 +99,7 @@ func render(grid [][]Cell) {
 }
 
 func main() {
-	gridSize := 10
+	gridSize := 40
 	noChange := bool(false)
 	grid := initGrid(gridSize)
 	for !noChange {
